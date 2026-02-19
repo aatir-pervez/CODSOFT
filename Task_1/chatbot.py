@@ -7,6 +7,9 @@ def get_response(user_input):
     if user_input == "exit":
         return "Goodbye! Have a great day."
 
+    elif "thanks" in user_input or "thank you" in user_input:
+    return "You're welcome! Happy to help."
+
     elif "hello" in user_input or "hi" in user_input:
         return "Hello! How can I assist you today?"
 
