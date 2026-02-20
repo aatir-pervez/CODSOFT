@@ -1,7 +1,6 @@
-
 # Tic-Tac-Toe AI using Minimax
 # CodSoft AI Internship - Task 2
-import random
+
 def print_board(board):
     print()
     for i in range(3):
@@ -10,10 +9,32 @@ def print_board(board):
             print("---|---|---")
     print()
 
-def ai_move(board):
-    available_positions = [i for i in range(9) if board[i] == " "]
-    move = random.choice(available_positions)
-    board[move] = "O"
+def minimax(board, is_maximizing):
+    if check_winner(board, "O"):
+        return 1
+    if check_winner(board, "X"):
+        return -1
+    if is_draw(board):
+        return 0
+
+    if is_maximizing:
+        best_score = -float("inf")
+        for i in range(9):
+            if board[i] == " ":
+                board[i] = "O"
+                score = minimax(board, False)
+                board[i] = " "
+                best_score = max(score, best_score)
+        return best_score
+    else:
+        best_score = float("inf")
+        for i in range(9):
+            if board[i] == " ":
+                board[i] = "X"
+                score = minimax(board, True)
+                board[i] = " "
+                best_score = min(score, best_score)
+        return best_score
     
 
 
@@ -34,6 +55,21 @@ def check_winner(board, player):
 
 def is_draw(board):
     return " " not in board
+
+def best_move(board):
+    best_score = -float("inf")
+    move = None
+
+    for i in range(9):
+        if board[i] == " ":
+            board[i] = "O"
+            score = minimax(board, False)
+            board[i] = " "
+            if score > best_score:
+                best_score = score
+                move = i
+
+    board[move] = "O"
 
 
 def main():
@@ -65,7 +101,7 @@ def main():
 
         # AI Move
         print("AI is making a move...")
-        ai_move(board)
+        best_move(board)
         print_board(board)
 
         if check_winner(board, "O"):
