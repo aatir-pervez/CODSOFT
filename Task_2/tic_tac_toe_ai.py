@@ -12,6 +12,12 @@ def print_board(board):
             print("---|---|---")
     print()
 
+def ai_move(board):
+    available_positions = [i for i in range(9) if board[i] == " "]
+    move = random.choice(available_positions)
+    board[move] = "O"
+    
+
 
 def check_winner(board, player):
     win_positions = [
@@ -41,23 +47,35 @@ def main():
     print_board(board)
 
     while True:
-        move = int(input("Enter your move (0-8): "))
-        
-        if board[move] != " ":
-            print("Position already taken! Try again.")
-            continue
-        
-        board[move] = "X"
-        print_board(board)
-        
-        if check_winner(board, "X"):
-            print("You win!")
-            break
+    # Human Move
+    move = int(input("Enter your move (0-8): "))
+    
+    if board[move] != " ":
+        print("Position already taken! Try again.")
+        continue
+    
+    board[move] = "X"
+    print_board(board)
+    
+    if check_winner(board, "X"):
+        print("You win!")
+        break
 
-        if is_draw(board):
-            print("It's a draw!")
-            break
+    if is_draw(board):
+        print("It's a draw!")
+        break
 
+    # AI Move
+    print("AI is making a move...")
+    ai_move(board)
+    print_board(board)
 
+    if check_winner(board, "O"):
+        print("AI wins!")
+        break
+
+    if is_draw(board):
+        print("It's a draw!")
+        break
 if __name__ == "__main__":
     main()
