@@ -47,35 +47,36 @@ def main():
     print_board(board)
 
     while True:
-    # Human Move
-    move = int(input("Enter your move (0-8): "))
-    
-    if board[move] != " ":
-        print("Position already taken! Try again.")
-        continue
-    
-    board[move] = "X"
-    print_board(board)
-    
-    if check_winner(board, "X"):
-        print("You win!")
-        break
+        # Human Move
+        move = int(input("Enter your move (0-8): "))
+        
+        if board[move] != " ":
+            print("Position already taken! Try again.")
+            continue
+        
+        board[move] = "X"
+        print_board(board)
+        
+        if check_winner(board, "X"):
+            print("You win!")
+            break
 
-    if is_draw(board):
-        print("It's a draw!")
-        break
+        if is_draw(board):
+            print("It's a draw!")
+            break
 
-    # AI Move
-    print("AI is making a move...")
-    ai_move(board)
-    print_board(board)
+        # AI Move
+        print("AI is making a move...")
+        ai_move(board)
+        print_board(board)
 
-    if check_winner(board, "O"):
-        print("AI wins!")
-        break
+        if check_winner(board, "O"):
+            print("AI wins!")
+            break
 
-    if is_draw(board):
-        print("It's a draw!")
-        break
+        if is_draw(board):
+            print("It's a draw!")
+            break
+   
 if __name__ == "__main__":
     main()
