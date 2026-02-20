@@ -28,11 +28,10 @@ def check_winner(board, player):
 def main():
     board = [" " for _ in range(9)]
     
-    board[0] = "X"
-    board[1] = "X"
-    board[2] = "X"
-    
+    print("Welcome to Tic-Tac-Toe!")
     print_board(board)
+    
+   
     
     if check_winner(board, "X"):
         print("X wins!")
