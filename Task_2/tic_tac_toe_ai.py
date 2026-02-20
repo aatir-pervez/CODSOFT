@@ -1,6 +1,9 @@
 # Tic-Tac-Toe AI using Minimax
 # CodSoft AI Internship - Task 2
 
+# Tic-Tac-Toe AI using Minimax
+# CodSoft AI Internship - Task 2
+
 def print_board(board):
     print()
     for i in range(3):
@@ -25,6 +28,10 @@ def check_winner(board, player):
     return False
 
 
+def is_draw(board):
+    return " " not in board
+
+
 def main():
     board = [" " for _ in range(9)]
     
@@ -46,9 +53,11 @@ def main():
         if check_winner(board, "X"):
             print("You win!")
             break
-        
-        break  # Temporary break (AI not added yet)
-   
+
+        if is_draw(board):
+            print("It's a draw!")
+            break
+
 
 if __name__ == "__main__":
     main()
