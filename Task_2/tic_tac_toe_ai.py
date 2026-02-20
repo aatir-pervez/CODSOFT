@@ -3,7 +3,7 @@
 
 # Tic-Tac-Toe AI using Minimax
 # CodSoft AI Internship - Task 2
-
+import random
 def print_board(board):
     print()
     for i in range(3):
