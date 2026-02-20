@@ -32,10 +32,6 @@ def main():
     print_board(board)
     
    
-    
-    if check_winner(board, "X"):
-        print("X wins!")
-
 
 if __name__ == "__main__":
     main()
