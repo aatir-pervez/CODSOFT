@@ -29,8 +29,25 @@ def main():
     board = [" " for _ in range(9)]
     
     print("Welcome to Tic-Tac-Toe!")
-    print_board(board)
+    print("You are X. Choose position 0-8.\n")
     
+    print_board(board)
+
+    while True:
+        move = int(input("Enter your move (0-8): "))
+        
+        if board[move] != " ":
+            print("Position already taken! Try again.")
+            continue
+        
+        board[move] = "X"
+        print_board(board)
+        
+        if check_winner(board, "X"):
+            print("You win!")
+            break
+        
+        break  # Temporary break (AI not added yet)
    
 
 if __name__ == "__main__":
